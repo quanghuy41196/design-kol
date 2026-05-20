@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+:root {
+  /* ===== Primary palette ===== */
+  --vt-navy: #1E3A5F;
+  --vt-navy-deep: #1A3A6E;
+  --vt-blue: #2C5AA0;
+  --vt-blue-light: #3B7DD8;
+
+  /* ===== Accent palette ===== */
+  --vt-orange: #F5A623;
+  --vt-orange-deep: #F39C12;
+  --vt-teal: #3FB1B5;
+  --vt-red: #E63946;
+
+  /* ===== Neutrals ===== */
+  --vt-white: #FFFFFF;
+  --vt-bg: #F7F9FC;
+  --vt-gray-100: #E5E7EB;
+  --vt-gray-500: #6B7280;
+  --vt-gray-900: #111827;
+
+  /* ===== Gradients ===== */
+  --vt-gradient-sun: linear-gradient(90deg, #F5A623 0%, #3FB1B5 100%);
+  --vt-gradient-cta: linear-gradient(135deg, #F5A623 0%, #1E3A5F 100%);
+  --vt-gradient-hero: linear-gradient(135deg, #1A3A6E 0%, #2C5AA0 100%);
+
+  /* ===== Radius / shadow ===== */
+  --vt-radius-sm: 6px;
+  --vt-radius-md: 12px;
+  --vt-radius-lg: 20px;
+  --vt-shadow-sm: 0 1px 2px rgba(30, 58, 95, 0.06);
+  --vt-shadow-md: 0 4px 12px rgba(30, 58, 95, 0.10);
+  --vt-shadow-lg: 0 12px 32px rgba(30, 58, 95, 0.16);
+
+  --background: var(--vt-bg);
+  --foreground: var(--vt-gray-900);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Brand colors */
+  --color-brand-navy: var(--vt-navy);
+  --color-brand-navy-deep: var(--vt-navy-deep);
+  --color-brand-blue: var(--vt-blue);
+  --color-brand-blue-light: var(--vt-blue-light);
+  --color-brand-orange: var(--vt-orange);
+  --color-brand-orange-deep: var(--vt-orange-deep);
+  --color-brand-teal: var(--vt-teal);
+  --color-brand-red: var(--vt-red);
+  --color-brand-bg: var(--vt-bg);
+  --color-brand-gray-100: var(--vt-gray-100);
+  --color-brand-gray-500: var(--vt-gray-500);
+  --color-brand-gray-900: var(--vt-gray-900);
+
+  --font-sans: "Be Vietnam Pro", "Inter", "Manrope", system-ui, sans-serif;
+  --font-heading: "Be Vietnam Pro", "Inter", system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+* {
+  border-color: var(--vt-gray-100);
+}
+
+html, body {
+  background: var(--vt-bg);
+  color: var(--vt-gray-900);
+  font-family: "Be Vietnam Pro", "Inter", "Manrope", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--vt-gray-100);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--vt-gray-500); }
+
+/* Utility helpers */
+.vt-card {
+  background: var(--vt-white);
+  border: 1px solid var(--vt-gray-100);
+  border-radius: var(--vt-radius-md);
+  box-shadow: var(--vt-shadow-sm);
+}
+.vt-btn-primary {
+  background: var(--vt-blue);
+  color: var(--vt-white);
+  border-radius: var(--vt-radius-md);
+  padding: 8px 16px;
+  font-weight: 600;
+  transition: all .15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.vt-btn-primary:hover { background: var(--vt-navy); transform: translateY(-1px); box-shadow: var(--vt-shadow-md); }
+.vt-btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+
+.vt-btn-secondary {
+  background: var(--vt-white);
+  color: var(--vt-gray-900);
+  border: 1px solid var(--vt-gray-100);
+  border-radius: var(--vt-radius-md);
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all .15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.vt-btn-secondary:hover { background: var(--vt-bg); border-color: var(--vt-blue); }
+
+.vt-btn-ghost {
+  background: transparent;
+  color: var(--vt-gray-500);
+  border-radius: var(--vt-radius-md);
+  padding: 8px 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.vt-btn-ghost:hover { background: var(--vt-bg); color: var(--vt-gray-900); }
+
+.vt-input {
+  width: 100%;
+  background: var(--vt-white);
+  border: 1px solid var(--vt-gray-100);
+  border-radius: var(--vt-radius-md);
+  padding: 8px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.vt-input:focus { border-color: var(--vt-blue); box-shadow: 0 0 0 3px rgba(44,90,160,0.12); }
+.vt-textarea { resize: vertical; min-height: 96px; }
+
+.vt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.vt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+}
