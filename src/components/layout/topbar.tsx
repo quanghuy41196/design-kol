@@ -6,10 +6,11 @@ import Link from "next/link";
 import { useProfile } from "@/components/shared/profile-context";
 
 const TITLES: Record<string, { title: string; subtitle: string }> = {
+  "/dashboard": { title: "Dashboard", subtitle: "Tổng quan hoạt động — tài khoản, bài đăng, tương tác" },
+  "/accounts": { title: "Quản Lý Tài Khoản", subtitle: "Quản lý tài khoản Facebook kết nối" },
+  "/kol": { title: "Quản Lý KOL", subtitle: "Phong cách viết bài, hình ảnh thương hiệu, nội dung định hướng" },
   "/sources": { title: "Nguồn Nội Dung", subtitle: "Tạo, crawl và viết lại bài cho profile của bạn" },
-  "/posts": { title: "Đăng Bài", subtitle: "Sinh và lên lịch bài đăng — chế độ nhắc (không tự đăng)" },
-  "/posts/batch": { title: "Duyệt Batch", subtitle: "Sinh hàng loạt, duyệt nhanh, lên lịch 7 ngày" },
-  "/schedule": { title: "Lịch Đăng", subtitle: "Theo dõi toàn bộ bài đã lên lịch theo tuần / tháng" },
+  "/posting": { title: "Quản Lý Đăng Bài", subtitle: "Lịch đăng, tự động hóa, profile mẫu và duyệt bài" },
   "/comments": { title: "Bình Luận", subtitle: "Trả lời comment với gợi ý AI và template" },
   "/messages": { title: "Tin Nhắn", subtitle: "Hộp thư hợp nhất — phân loại tự động" },
   "/bot": { title: "Bot Chat", subtitle: "Cấu hình kịch bản bot trả lời tự động" },

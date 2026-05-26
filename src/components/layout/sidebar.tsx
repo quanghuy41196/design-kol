@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import {
-  FileText, Edit3, Calendar, MessageSquare, Inbox, Bot, Bell,
-  ChevronDown, Check, Sparkles
+  FileText, MessageSquare, Inbox, Bot, Bell,
+  Sparkles, Users, LayoutDashboard, UserSquare2, Layers
 } from "lucide-react";
 import { useProfile } from "@/components/shared/profile-context";
 
@@ -16,9 +15,11 @@ interface NavItem {
 }
 
 const NAV: NavItem[] = [
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/accounts", label: "Quản Lý Tài Khoản", icon: Users },
+  { href: "/kol", label: "Quản Lý KOL", icon: UserSquare2 },
   { href: "/sources", label: "Nguồn Nội Dung", icon: FileText },
-  { href: "/posts", label: "Đăng Bài", icon: Edit3 },
-  { href: "/schedule", label: "Lịch Đăng", icon: Calendar },
+  { href: "/posting", label: "Quản Lý Đăng Bài", icon: Layers },
   { href: "/comments", label: "Bình Luận", icon: MessageSquare },
   { href: "/messages", label: "Tin Nhắn", icon: Inbox },
   { href: "/bot", label: "Bot Chat", icon: Bot },
@@ -27,8 +28,7 @@ const NAV: NavItem[] = [
 
 export function Sidebar() {
   const pathname = usePathname();
-  const { activeProfile, profiles, setActiveProfileId } = useProfile();
-  const [open, setOpen] = useState(false);
+  const { activeProfile } = useProfile();
 
   return (
     <aside
@@ -49,64 +49,13 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Profile switcher */}
-      <div className="px-3 pb-3 relative">
-        <button
-          onClick={() => setOpen(!open)}
-          className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg transition-colors hover:bg-white/10"
-          style={{ background: "rgba(255,255,255,0.06)" }}
-        >
-          <div
-            className="w-8 h-8 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0"
-            style={{ background: activeProfile.avatarColor }}
-          >
-            {activeProfile.initials}
-          </div>
-          <div className="flex-1 text-left min-w-0">
-            <div className="text-[13px] font-semibold truncate">{activeProfile.name}</div>
-            <div className="text-[10.5px] opacity-65">{activeProfile.nicheLabel}</div>
-          </div>
-          <ChevronDown size={14} className={`transition-transform ${open ? "rotate-180" : ""}`} />
-        </button>
-
-        {open && (
-          <div className="absolute left-3 right-3 mt-1 rounded-lg shadow-lg z-50 overflow-hidden"
-            style={{ background: "var(--vt-navy-deep)" }}>
-            {profiles.map((p) => (
-              <button
-                key={p.id}
-                onClick={() => { setActiveProfileId(p.id); setOpen(false); }}
-                className="w-full flex items-center gap-2.5 px-3 py-2.5 hover:bg-white/10 transition-colors"
-              >
-                <div
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white"
-                  style={{ background: p.avatarColor }}
-                >
-                  {p.initials}
-                </div>
-                <div className="flex-1 text-left">
-                  <div className="text-[12.5px] font-semibold">{p.name}</div>
-                  <div className="text-[10px] opacity-65">{p.nicheLabel} · {p.followers}</div>
-                </div>
-                {p.id === activeProfile.id && <Check size={14} className="text-[var(--vt-orange)]" />}
-              </button>
-            ))}
-            <div className="border-t border-white/10 px-3 py-2 text-[11px] opacity-60 text-center">
-              + Thêm profile mới
-            </div>
-          </div>
-        )}
-      </div>
 
       {/* Nav */}
       <nav className="flex-1 px-3 overflow-y-auto">
-        <div className="text-[10px] uppercase tracking-wider opacity-50 px-3 py-2 font-semibold">
-          Workspace
-        </div>
-        <ul className="space-y-0.5">
+<ul className="space-y-0.5">
           {NAV.map((item) => {
             const Icon = item.icon;
-            const active = pathname === item.href || (item.href === "/posts" && pathname.startsWith("/posts"));
+            const active = pathname === item.href;
             return (
               <li key={item.href}>
                 <Link

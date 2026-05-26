@@ -1,4 +1,4 @@
-export type ProfileNiche = "beauty" | "tech" | "mom";
+export type ProfileNiche = "beauty" | "tech" | "mom" | "lifestyle" | "food" | "fitness" | "business" | "other";
 
 export interface KOLProfile {
   id: string;
@@ -49,6 +49,142 @@ export const PROFILES: KOLProfile[] = [
     quotaUsed: 34,
     quotaTotal: 200,
     status: "idle",
+  },
+];
+
+export type SourceLinkType = "website" | "facebook_profile" | "facebook_page" | "facebook_group";
+
+export interface SourceLink {
+  id: string;
+  type: SourceLinkType;
+  label: string;
+  url: string;
+  active: boolean;
+}
+
+export interface KOLBrand {
+  profileId: string;
+  tagline: string;
+  bio: string;
+  targetAudience: string;
+  brandColors: string[];
+  writingTones: string[];
+  writingStyle: string;
+  vocabularyUse: string[];
+  vocabularyAvoid: string[];
+  emojiUsage: "none" | "minimal" | "moderate" | "heavy";
+  contentPillars: { name: string; description: string; pct: number }[];
+  defaultHashtags: string[];
+  ctaTemplates: string[];
+  visualStyle: string;
+  brandPersonality: string[];
+  postingFrequency: string;
+  bestPostingTimes: string[];
+  sourceLinks: SourceLink[];
+}
+
+export const KOL_BRANDS: KOLBrand[] = [
+  {
+    profileId: "p1",
+    tagline: "Đẹp tự nhiên, sống tích cực 🌸",
+    bio: "Mình là Linh — beauty blogger 5 năm kinh nghiệm. Mình chia sẻ skincare thực tế, không quảng cáo lố. Mỗi sản phẩm mình đều dùng thật, cảm nhận thật.",
+    targetAudience: "Nữ 18–34 tuổi, quan tâm skincare & makeup, thu nhập trung bình–khá, sống tại đô thị",
+    brandColors: ["#F5A623", "#FDE68A", "#FFF7ED", "#1a1a1a"],
+    writingTones: ["Thân thiện", "Gần gũi", "Chân thật", "Vui tươi"],
+    writingStyle: "Viết như nói chuyện với bạn bè — dùng từ ngữ đời thường, xưng 'mình', gọi là 'bạn'. Câu ngắn, dễ đọc trên mobile. Hay dùng số liệu cụ thể (2 tuần, 3 lần/tuần).",
+    vocabularyUse: ["mình", "bạn ơi", "thật sự", "cực kỳ", "đỉnh", "hợp lý", "xịn sò"],
+    vocabularyAvoid: ["cam kết", "100%", "thần kỳ", "cải thiện hoàn toàn", "không tác dụng phụ"],
+    emojiUsage: "moderate",
+    contentPillars: [
+      { name: "Review sản phẩm", description: "Đánh giá honest skincare, makeup", pct: 40 },
+      { name: "Tips & Tutorial", description: "Hướng dẫn làm đẹp thực tế", pct: 30 },
+      { name: "Lifestyle", description: "Cuộc sống, tích cực, self-care", pct: 20 },
+      { name: "Q&A / Tương tác", description: "Trả lời câu hỏi followers", pct: 10 },
+    ],
+    defaultHashtags: ["#skincare", "#beauty", "#reviewmypham", "#linhnguyenbeauty", "#lamdepcunglinh", "#skincarevietnamese"],
+    ctaTemplates: [
+      "Bạn thử chưa? Comment cho mình biết nha! 💬",
+      "Save bài này để dùng sau bạn nhé ✨",
+      "Inbox mình để được tư vấn miễn phí 💕",
+      "Tag bạn bè cùng xem nào 👇",
+    ],
+    visualStyle: "Tone màu ấm — cam mật ong, kem, trắng sữa. Ảnh sáng tự nhiên, background gọn gàng. Flat-lay hoặc close-up sản phẩm.",
+    brandPersonality: ["Đáng tin cậy", "Gần gũi", "Chuyên nghiệp nhưng không khô khan", "Tích cực"],
+    postingFrequency: "1–2 bài/ngày",
+    bestPostingTimes: ["07:00–08:30", "12:00–13:00", "20:00–21:30"],
+    sourceLinks: [
+      { id: "sl1", type: "facebook_profile", label: "Profile FB cá nhân", url: "https://facebook.com/linhnguyenbeauty", active: true },
+      { id: "sl2", type: "facebook_page",    label: "Fanpage Beauty",     url: "https://facebook.com/linhnguyenbeautypage", active: true },
+      { id: "sl3", type: "website",          label: "Blog cá nhân",       url: "https://linhbeauty.vn", active: false },
+    ],
+  },
+  {
+    profileId: "p2",
+    tagline: "Công nghệ đơn giản cho mọi người",
+    bio: "Hùng MKT — review gadget, app, và công cụ năng suất. Mình dùng thật, nói thật. Không hype, không click-bait.",
+    targetAudience: "Nam 22–40 tuổi, dân văn phòng, freelancer, startup. Thích năng suất và gadget mới.",
+    brandColors: ["#2C5AA0", "#DBEAFE", "#F0F4FF", "#0f172a"],
+    writingTones: ["Trực tiếp", "Khách quan", "Có chiều sâu", "Thực tế"],
+    writingStyle: "Viết súc tích, có cấu trúc rõ ràng. Hay dùng list, bullet point, so sánh A/B. Đưa ra con số cụ thể. Kết luận rõ ràng: nên mua hay không.",
+    vocabularyUse: ["thực tế", "đáng tiền", "không đáng tiền", "hiệu năng", "trải nghiệm", "đáng chú ý"],
+    vocabularyAvoid: ["siêu phẩm", "xuất sắc", "không đối thủ", "bá đạo", "cực phẩm"],
+    emojiUsage: "minimal",
+    contentPillars: [
+      { name: "Review thiết bị", description: "Đánh giá chi tiết gadget, máy tính, phone", pct: 45 },
+      { name: "Năng suất & App", description: "Tool, app, workflow tăng productivity", pct: 30 },
+      { name: "Tin tức công nghệ", description: "Update nhanh sản phẩm mới", pct: 15 },
+      { name: "Hỏi đáp cộng đồng", description: "Tư vấn mua máy, setup", pct: 10 },
+    ],
+    defaultHashtags: ["#review", "#congnghe", "#gadget", "#hungmkttech", "#productivity", "#techvietnam"],
+    ctaTemplates: [
+      "Bạn đang dùng máy gì? Comment bên dưới 👇",
+      "Save lại để xem khi cần mua nhé",
+      "Có câu hỏi gì inbox mình thẳng",
+      "Share cho ai đang phân vân 🔁",
+    ],
+    visualStyle: "Tone màu lạnh — xanh dương, trắng, xám. Ảnh sản phẩm trên background tối hoặc trắng. Infographic đơn giản. Screenshot thực tế.",
+    brandPersonality: ["Khách quan", "Đáng tin", "Chuyên sâu", "Không thương mại hoá lộ liễu"],
+    postingFrequency: "1 bài/ngày",
+    bestPostingTimes: ["07:30–09:00", "12:00–13:30", "21:00–22:00"],
+    sourceLinks: [
+      { id: "sl4", type: "facebook_profile", label: "Profile FB Hùng MKT",    url: "https://facebook.com/hungmkttech", active: true },
+      { id: "sl5", type: "website",          label: "Blog công nghệ",          url: "https://hungmkt.tech", active: true },
+      { id: "sl6", type: "facebook_group",   label: "Nhóm Review Gadget VN",   url: "https://facebook.com/groups/reviewgadgetvn", active: false },
+    ],
+  },
+  {
+    profileId: "p3",
+    tagline: "Hành trình làm mẹ — chân thật và ấm áp 🍼",
+    bio: "Mình là Mai Chi, mẹ của bé Xu (3 tuổi). Chia sẻ kinh nghiệm nuôi con, dạy con và chăm sóc bản thân sau sinh. Mọi thứ mình viết đều từ trải nghiệm thật.",
+    targetAudience: "Phụ nữ 25–38 tuổi, đã có con hoặc chuẩn bị sinh. Quan tâm nuôi dưỡng, giáo dục sớm, sức khoẻ mẹ & bé.",
+    brandColors: ["#3FB1B5", "#CCFBF1", "#F0FDFA", "#1a2e2e"],
+    writingTones: ["Ấm áp", "Chân thật", "Đồng cảm", "Khích lệ"],
+    writingStyle: "Kể chuyện từ trải nghiệm cá nhân. Hay dùng 'hành trình', 'mình từng', 'bé nhà mình'. Câu chuyện có mở—thân—kết. Không phán xét cách nuôi con của người khác.",
+    vocabularyUse: ["bé", "mẹ bỉm", "hành trình", "mình từng", "tụi mình", "thực sự", "may mắn"],
+    vocabularyAvoid: ["phải", "đúng nhất", "sai rồi", "thất bại", "không tốt cho con"],
+    emojiUsage: "moderate",
+    contentPillars: [
+      { name: "Nuôi con khoa học", description: "Ăn dặm, giấc ngủ, phát triển bé", pct: 35 },
+      { name: "Câu chuyện mẹ bỉm", description: "Chia sẻ thật từ cuộc sống hàng ngày", pct: 30 },
+      { name: "Mẹ chăm mẹ", description: "Sức khoẻ, tâm lý mẹ sau sinh", pct: 25 },
+      { name: "Sản phẩm mẹ & bé", description: "Review đồ dùng thực tế", pct: 10 },
+    ],
+    defaultHashtags: ["#mebimsuavietnam", "#nuoicon", "#maichi", "#hainhtrinhlamme", "#bexu", "#momlife"],
+    ctaTemplates: [
+      "Mẹ nào đồng cảm với mình không? Share để nhiều mẹ biết nhé 💙",
+      "Bé nhà bạn đang ở giai đoạn nào? Comment mình cùng thảo luận 👇",
+      "Save lại cho khi bé đến tuổi này nha 📌",
+      "Inbox mình nếu bạn cần thêm thông tin 🌿",
+    ],
+    visualStyle: "Tone màu xanh mint, kem, trắng. Ảnh mẹ và bé tự nhiên, không quá chỉnh sửa. Ánh sáng tự nhiên ban ngày. Không ảnh quá cầu kỳ.",
+    brandPersonality: ["Ấm áp", "Chân thật", "Không phán xét", "Truyền cảm hứng nhẹ nhàng"],
+    postingFrequency: "1 bài/ngày",
+    bestPostingTimes: ["06:30–08:00", "13:00–14:00", "21:00–22:30"],
+    sourceLinks: [
+      { id: "sl7", type: "facebook_profile", label: "Profile FB Mai Chi",     url: "https://facebook.com/maichi.mom", active: true },
+      { id: "sl8", type: "facebook_page",    label: "Fanpage Mẹ Bỉm Sữa",    url: "https://facebook.com/maichimomlife", active: true },
+      { id: "sl9", type: "website",          label: "Blog nuôi con",          url: "https://maichimom.vn", active: false },
+    ],
   },
 ];
 
@@ -510,6 +646,84 @@ export const NOTIFICATION_TOGGLES: NotificationConfig[] = [
   { key: "quota_warning", title: "Quota sắp hết", description: "Còn <20% quota tháng", enabled: true },
 ];
 
+export type AccountStatus = "live" | "checkpoint" | "die" | "disconnected" | "connecting";
+
+export interface SocialAccount {
+  id: string;
+  uid: string;
+  password: string;
+  twoFaSecret: string;
+  fbName: string;
+  kolProfileId: string | null;
+  avatarColor: string;
+  status: AccountStatus;
+  connectedAt: string | null;
+  lastActiveAt: string | null;
+  lastPostedAt: string | null;
+  friends: number;
+  followers: number;
+  postsCount: number;
+  healthScore: number;
+  dailyLimit: number;
+  usedToday: number;
+}
+
+export const SOCIAL_ACCOUNTS: SocialAccount[] = [
+  {
+    id: "acc1", uid: "100089234156712", password: "Linh@2024!",
+    twoFaSecret: "JBSWY3DPEHPK3PXP", fbName: "Linh Nguyễn Beauty",
+    kolProfileId: "p1", avatarColor: "#F5A623",
+    status: "live", connectedAt: "2026-01-20", lastActiveAt: "2026-05-26T08:12:00",
+    lastPostedAt: "2026-05-25T10:00:00",
+    friends: 4823, followers: 22400, postsCount: 198, healthScore: 92,
+    dailyLimit: 5, usedToday: 2,
+  },
+  {
+    id: "acc2", uid: "100072918374650", password: "Hung#Mkt2025",
+    twoFaSecret: "KVKFKRCPNBCC4Y3F", fbName: "Hùng MKT Tech",
+    kolProfileId: "p2", avatarColor: "#2C5AA0",
+    status: "checkpoint", connectedAt: "2026-01-10", lastActiveAt: "2026-05-22T14:30:00",
+    lastPostedAt: "2026-05-22T14:00:00",
+    friends: 2310, followers: 11200, postsCount: 76, healthScore: 54,
+    dailyLimit: 5, usedToday: 0,
+  },
+  {
+    id: "acc3", uid: "100065481920345", password: "MaiChi_mom!23",
+    twoFaSecret: "GEZDGNBVGY3TQOJQ", fbName: "Mai Chi Momlife",
+    kolProfileId: "p3", avatarColor: "#3FB1B5",
+    status: "die", connectedAt: null, lastActiveAt: "2026-05-10T09:00:00",
+    lastPostedAt: null,
+    friends: 891, followers: 8100, postsCount: 34, healthScore: 12,
+    dailyLimit: 5, usedToday: 0,
+  },
+  {
+    id: "acc4", uid: "100081726354890", password: "Backup@KOL99",
+    twoFaSecret: "MFRA4Y3IMFRA4Y3I", fbName: "Linh Beauty Backup",
+    kolProfileId: "p1", avatarColor: "#F5A623",
+    status: "disconnected", connectedAt: null, lastActiveAt: null,
+    lastPostedAt: null,
+    friends: 0, followers: 0, postsCount: 0, healthScore: 0,
+    dailyLimit: 5, usedToday: 0,
+  },
+  {
+    id: "acc5", uid: "100094857362010", password: "Tech#Review2026",
+    twoFaSecret: "ONSWG4TFONSWG4TF", fbName: "Hùng Review Gadget",
+    kolProfileId: null, avatarColor: "#6B7280",
+    status: "live", connectedAt: "2026-03-01", lastActiveAt: "2026-05-26T07:45:00",
+    lastPostedAt: "2026-05-25T19:00:00",
+    friends: 3102, followers: 15600, postsCount: 112, healthScore: 87,
+    dailyLimit: 5, usedToday: 3,
+  },
+];
+
+export const ACCOUNT_STATUS_META: Record<AccountStatus, { label: string; color: string; bg: string }> = {
+  live:         { label: "Live",        color: "#16a34a", bg: "rgba(22,163,74,0.12)"   },
+  checkpoint:   { label: "Checkpoint",  color: "#d97706", bg: "rgba(217,119,6,0.14)"  },
+  die:          { label: "Die",         color: "#dc2626", bg: "rgba(220,38,38,0.12)"  },
+  disconnected: { label: "Chưa kết nối",color: "#6B7280", bg: "#E5E7EB"              },
+  connecting:   { label: "Đang kết nối",color: "#2C5AA0", bg: "rgba(44,90,160,0.12)" },
+};
+
 export const KEYBOARD_SHORTCUTS = [
   { key: "J", label: "Tiếp theo" },
   { key: "K", label: "Trước" },
@@ -531,4 +745,83 @@ export const MESSAGE_TYPE_META: Record<MessageType, { label: string; color: stri
   thong_tin: { label: "Thông tin", color: "#2C5AA0", bg: "rgba(44,90,160,0.12)" },
   phan_nan: { label: "Phàn nàn", color: "#E63946", bg: "rgba(230,57,70,0.12)" },
   spam: { label: "Spam", color: "#6B7280", bg: "#E5E7EB" },
+};
+
+// ─── Post Management ────────────────────────────────────────────────────────
+
+export interface AutoPostConfig {
+  profileId: string;
+  enabled: boolean;
+  postsPerDay: number;
+  postingTimes: string[];
+  daysActive: number[]; // 0=Mon … 6=Sun
+  requireApproval: boolean;
+  autoFromSources: boolean;
+}
+
+export const AUTO_POST_CONFIGS: AutoPostConfig[] = [
+  {
+    profileId: "p1", enabled: true, postsPerDay: 2,
+    postingTimes: ["07:30", "20:00"],
+    daysActive: [0, 1, 2, 3, 4, 5, 6],
+    requireApproval: true, autoFromSources: true,
+  },
+  {
+    profileId: "p2", enabled: true, postsPerDay: 1,
+    postingTimes: ["08:00", "21:00"],
+    daysActive: [0, 1, 2, 3, 4],
+    requireApproval: false, autoFromSources: false,
+  },
+  {
+    profileId: "p3", enabled: false, postsPerDay: 1,
+    postingTimes: ["07:00", "13:00"],
+    daysActive: [0, 1, 2, 3, 4, 5, 6],
+    requireApproval: true, autoFromSources: true,
+  },
+];
+
+export interface TemplateProfileConfig {
+  profileId: string;
+  enabled: boolean;
+  templateUrl: string;
+  templateLabel: string;
+  autoRewrite: boolean;
+  autoSchedule: boolean;
+}
+
+export const TEMPLATE_PROFILE_CONFIGS: TemplateProfileConfig[] = [
+  {
+    profileId: "p1", enabled: true,
+    templateUrl: "https://facebook.com/beautyguru.vn",
+    templateLabel: "Beauty Guru VN",
+    autoRewrite: true, autoSchedule: false,
+  },
+  {
+    profileId: "p2", enabled: false,
+    templateUrl: "",
+    templateLabel: "",
+    autoRewrite: true, autoSchedule: false,
+  },
+  {
+    profileId: "p3", enabled: true,
+    templateUrl: "https://facebook.com/momlife.official",
+    templateLabel: "Momlife Official",
+    autoRewrite: true, autoSchedule: true,
+  },
+];
+
+export interface ApprovalSettings {
+  requireApprovalForAuto: boolean;
+  requireApprovalForManual: boolean;
+  notifyChannel: "telegram" | "lark" | "none";
+  notifyContact: string;
+  reminderAfterHours: number;
+}
+
+export const APPROVAL_SETTINGS: ApprovalSettings = {
+  requireApprovalForAuto: true,
+  requireApprovalForManual: false,
+  notifyChannel: "telegram",
+  notifyContact: "@mktkolbot",
+  reminderAfterHours: 2,
 };
