@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   FileText, MessageSquare, Inbox, Bot, Bell,
-  Sparkles, Users, LayoutDashboard, UserSquare2, Layers
+  Sparkles, Users, LayoutDashboard, UserSquare2, Layers, Activity
 } from "lucide-react";
 import { useProfile } from "@/components/shared/profile-context";
 
@@ -16,13 +16,12 @@ interface NavItem {
 
 const NAV: NavItem[] = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/accounts", label: "Quản Lý Tài Khoản", icon: Users },
-  { href: "/kol", label: "Quản Lý KOL", icon: UserSquare2 },
-  { href: "/sources", label: "Nguồn Nội Dung", icon: FileText },
+  { href: "/accounts", label: "Quản Lý KOL", icon: Users },
+  { href: "/kol", label: "Quản Lý Mẫu KOL", icon: UserSquare2 },
+  { href: "/sources", label: "Quản Lý Nội Dung", icon: FileText },
   { href: "/posting", label: "Quản Lý Đăng Bài", icon: Layers },
   { href: "/comments", label: "Bình Luận", icon: MessageSquare },
-  { href: "/messages", label: "Tin Nhắn", icon: Inbox },
-  { href: "/bot", label: "Bot Chat", icon: Bot },
+  { href: "/interactions", label: "Tương Tác", icon: Activity },
   { href: "/notifications", label: "Bot Thông Báo", icon: Bell },
 ];
 

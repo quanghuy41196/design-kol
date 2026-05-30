@@ -1,4 +1,4 @@
-export type ProfileNiche = "beauty" | "tech" | "mom" | "lifestyle" | "food" | "fitness" | "business" | "other";
+export type ProfileNiche = "beauty" | "tech" | "mom" | "lifestyle" | "food" | "fitness" | "business" | "other" | "fashion" | "travel" | "finance" | "education" | "gaming" | "pets";
 
 export interface KOLProfile {
   id: string;
@@ -11,6 +11,11 @@ export interface KOLProfile {
   quotaUsed: number;
   quotaTotal: number;
   status: "active" | "checkpoint" | "idle";
+  linkedAccountId?: string;
+  age?: string;
+  gender?: string;
+  occupation?: string;
+  faceCount?: number;
 }
 
 export const PROFILES: KOLProfile[] = [
@@ -81,6 +86,10 @@ export interface KOLBrand {
   postingFrequency: string;
   bestPostingTimes: string[];
   sourceLinks: SourceLink[];
+  fanAgeGroups?: string[];
+  fanGender?: string;
+  fanSpending?: string;
+  fanInterests?: string[];
 }
 
 export const KOL_BRANDS: KOLBrand[] = [
@@ -329,21 +338,25 @@ export interface Comment {
 }
 
 export const COMMENTS: Comment[] = [
-  { id: "c1", postId: "ps3", author: "Trần Hà My", avatarColor: "#F5A623", content: "Chị ơi son số 2 mua ở đâu vậy ạ?", timestamp: "2026-05-20T08:30:00", likes: 12, hasQuestion: true, status: "unanswered", profileId: "p1" },
-  { id: "c2", postId: "ps3", author: "Nguyễn Linh", avatarColor: "#3FB1B5", content: "Mình bị môi khô có dùng được không chị?", timestamp: "2026-05-20T08:15:00", likes: 8, hasQuestion: true, status: "unanswered", profileId: "p1" },
-  { id: "c3", postId: "ps1", author: "Phan Thanh", avatarColor: "#2C5AA0", content: "Giá bao nhiêu vậy shop?", timestamp: "2026-05-20T09:00:00", likes: 5, hasQuestion: true, status: "unanswered", profileId: "p1" },
-  { id: "c4", postId: "ps3", author: "Lê Vy", avatarColor: "#E63946", content: "Em mua thử cây số 1 rồi, đỉnh thật chị!", timestamp: "2026-05-20T07:45:00", likes: 24, hasQuestion: false, status: "answered", profileId: "p1" },
-  { id: "c5", postId: "ps1", author: "Đỗ Mai", avatarColor: "#3FB1B5", content: "Da nhạy cảm dùng được không ạ?", timestamp: "2026-05-20T08:50:00", likes: 3, hasQuestion: true, status: "needs_review", profileId: "p1" },
-  { id: "c6", postId: "ps3", author: "Vũ Hoa", avatarColor: "#F5A623", content: "Mua ở đâu giá rẻ nhất ạ?", timestamp: "2026-05-20T08:00:00", likes: 6, hasQuestion: true, status: "unanswered", profileId: "p1" },
-  { id: "c7", postId: "ps3", author: "Tâm Tâm", avatarColor: "#2C5AA0", content: "Shop có ship COD không?", timestamp: "2026-05-20T07:30:00", likes: 2, hasQuestion: true, status: "unanswered", profileId: "p1" },
-  { id: "c8", postId: "ps1", author: "Hồng Anh", avatarColor: "#E63946", content: "Chị review thiệt tâm quá! Yêu chị 😘", timestamp: "2026-05-20T07:15:00", likes: 18, hasQuestion: false, status: "answered", profileId: "p1" },
-  { id: "c9", postId: "ps1", author: "Quỳnh Trang", avatarColor: "#3FB1B5", content: "Có code giảm giá không chị?", timestamp: "2026-05-20T08:20:00", likes: 4, hasQuestion: true, status: "unanswered", profileId: "p1" },
-  { id: "c10", postId: "ps3", author: "Bình An", avatarColor: "#F5A623", content: "Em mua màu 03 ạ", timestamp: "2026-05-20T06:50:00", likes: 1, hasQuestion: false, status: "unanswered", profileId: "p1" },
-  { id: "c11", postId: "ps1", author: "Như Ý", avatarColor: "#2C5AA0", content: "Bao lâu thấy hiệu quả vậy chị?", timestamp: "2026-05-20T08:10:00", likes: 7, hasQuestion: true, status: "unanswered", profileId: "p1" },
-  { id: "c12", postId: "ps3", author: "Diệu Linh", avatarColor: "#E63946", content: "Chị có dùng kèm dưỡng ẩm gì không?", timestamp: "2026-05-20T07:55:00", likes: 5, hasQuestion: true, status: "needs_review", profileId: "p1" },
-  { id: "c13", postId: "ps3", author: "Spam Account 01", avatarColor: "#6B7280", content: "Mua sỉ liên hệ zalo 09xxx, giá tốt!", timestamp: "2026-05-20T05:00:00", likes: 0, hasQuestion: false, status: "needs_review", profileId: "p1" },
-  { id: "c14", postId: "ps3", author: "Hà Linh", avatarColor: "#F5A623", content: "Đẹp quá chị ơi 🥰", timestamp: "2026-05-20T07:20:00", likes: 9, hasQuestion: false, status: "answered", profileId: "p1" },
-  { id: "c15", postId: "ps3", author: "Thu Hà", avatarColor: "#3FB1B5", content: "Có size mini không ạ?", timestamp: "2026-05-20T06:40:00", likes: 3, hasQuestion: true, status: "unanswered", profileId: "p1" },
+  // p1 – Linh (Beauty)
+  { id: "c1",  postId: "ps3", author: "Trần Hà My",      avatarColor: "#F5A623", content: "Chị ơi son số 2 mua ở đâu vậy ạ?",                       timestamp: "2026-05-20T08:30:00", likes: 12, hasQuestion: true,  status: "unanswered",  profileId: "p1" },
+  { id: "c2",  postId: "ps3", author: "Nguyễn Linh",     avatarColor: "#3FB1B5", content: "Mình bị môi khô có dùng được không chị?",                  timestamp: "2026-05-20T08:15:00", likes: 8,  hasQuestion: true,  status: "unanswered",  profileId: "p1" },
+  { id: "c3",  postId: "ps1", author: "Phan Thanh",      avatarColor: "#2C5AA0", content: "Serum này giá bao nhiêu vậy chị?",                         timestamp: "2026-05-20T09:00:00", likes: 5,  hasQuestion: true,  status: "unanswered",  profileId: "p1" },
+  { id: "c4",  postId: "ps3", author: "Lê Vy",           avatarColor: "#E63946", content: "Em mua thử cây số 1 rồi, đỉnh thật chị!",                  timestamp: "2026-05-20T07:45:00", likes: 24, hasQuestion: false, status: "answered",    profileId: "p1" },
+  { id: "c5",  postId: "ps1", author: "Đỗ Mai",          avatarColor: "#3FB1B5", content: "Da nhạy cảm dùng được không ạ?",                           timestamp: "2026-05-20T08:50:00", likes: 3,  hasQuestion: true,  status: "needs_review", profileId: "p1" },
+  // p2 – Khoa (Tech)
+  { id: "c6",  postId: "ps4", author: "Minh Tuấn",       avatarColor: "#7C3AED", content: "Camera iPhone 17 Pro có ngon hơn 16 không bạn?",           timestamp: "2026-05-20T10:10:00", likes: 14, hasQuestion: true,  status: "unanswered",  profileId: "p2" },
+  { id: "c7",  postId: "ps4", author: "Hoàng Long",      avatarColor: "#059669", content: "Pin có cải thiện không? Mình đang dùng 15 cân nhắc lên đây", timestamp: "2026-05-20T09:45:00", likes: 21, hasQuestion: true,  status: "unanswered",  profileId: "p2" },
+  { id: "c8",  postId: "ps5", author: "Gia Bảo",         avatarColor: "#F5A623", content: "Bàn đó mua ở đâu vậy bạn? Link đặt hàng không?",           timestamp: "2026-05-20T11:00:00", likes: 6,  hasQuestion: true,  status: "unanswered",  profileId: "p2" },
+  { id: "c9",  postId: "ps9", author: "Thanh Phong",     avatarColor: "#E63946", content: "App Notion hay Obsidian hơn theo bạn?",                    timestamp: "2026-05-20T08:30:00", likes: 9,  hasQuestion: true,  status: "needs_review", profileId: "p2" },
+  { id: "c16", postId: "ps5", author: "Công Danh",       avatarColor: "#2C5AA0", content: "Setup này cũng tương tự bên mình, 5 triệu là hơi căng 😅", timestamp: "2026-05-20T12:00:00", likes: 3,  hasQuestion: false, status: "answered",    profileId: "p2" },
+  // p3 – Mai Mom (Parenting)
+  { id: "c10", postId: "ps6", author: "Thanh Huyền",     avatarColor: "#F5A623", content: "Bé nhà mình 6 tháng, bắt đầu ăn dặm được chưa chị?",      timestamp: "2026-05-20T07:10:00", likes: 11, hasQuestion: true,  status: "unanswered",  profileId: "p3" },
+  { id: "c11", postId: "ps6", author: "Kim Ngân",        avatarColor: "#2C5AA0", content: "Chị ơi bé ăn dặm kiểu BLW hay xay nhuyễn tốt hơn ạ?",     timestamp: "2026-05-20T07:30:00", likes: 7,  hasQuestion: true,  status: "unanswered",  profileId: "p3" },
+  { id: "c12", postId: "ps7", author: "Diệu Linh",       avatarColor: "#E63946", content: "List của chị đúng quá! Mình mua máy hút sữa mà không xài", timestamp: "2026-05-20T08:55:00", likes: 15, hasQuestion: false, status: "answered",    profileId: "p3" },
+  { id: "c13", postId: "ps7", author: "Spam Account 01", avatarColor: "#6B7280", content: "Đồ sơ sinh giá sỉ, inbox page nhé! Hàng chuẩn đảm bảo",   timestamp: "2026-05-20T05:00:00", likes: 0,  hasQuestion: false, status: "needs_review", profileId: "p3" },
+  { id: "c14", postId: "ps6", author: "Phương Anh",      avatarColor: "#F5A623", content: "Cảm ơn chị, bài viết hữu ích quá 🥰",                      timestamp: "2026-05-20T09:20:00", likes: 8,  hasQuestion: false, status: "answered",    profileId: "p3" },
+  { id: "c15", postId: "ps7", author: "Thu Hiền",        avatarColor: "#3FB1B5", content: "Địu em bé thương hiệu nào tốt không chị?",                 timestamp: "2026-05-20T06:40:00", likes: 4,  hasQuestion: true,  status: "unanswered",  profileId: "p3" },
 ];
 
 export type MessageType = "mua_hang" | "thong_tin" | "phan_nan" | "spam";
@@ -810,6 +823,25 @@ export const TEMPLATE_PROFILE_CONFIGS: TemplateProfileConfig[] = [
   },
 ];
 
+export interface ContentItem {
+  id: string;
+  type: "text" | "image" | "carousel" | "video";
+  status: "ready" | "used" | "draft";
+  score: number;
+  title: string;
+  date: string;
+  tags: string[];
+}
+
+export const CONTENT_LIBRARY: ContentItem[] = [
+  { id: "1", type: "text",     status: "ready",  score: 87, title: "Review serum vitamin C dưỡng da khô mùa hanh",   date: "20/05", tags: ["skincare", "review"]   },
+  { id: "2", type: "image",    status: "ready",  score: 91, title: "Bộ ảnh routine sáng da tháng 5",                 date: "19/05", tags: ["beauty", "morning"]   },
+  { id: "3", type: "carousel", status: "used",   score: 78, title: "6 bước skincare cho da dầu mùa hè",             date: "18/05", tags: ["skincare", "tips"]    },
+  { id: "4", type: "video",    status: "ready",  score: 83, title: "Unboxing bộ dưỡng da mới nhất 2025",            date: "17/05", tags: ["unboxing"]            },
+  { id: "5", type: "text",     status: "draft",  score: 65, title: "Top 5 toner không cồn cho da nhạy cảm",         date: "16/05", tags: ["toner", "sensitive"]  },
+  { id: "6", type: "image",    status: "used",   score: 94, title: "Before & After dùng retinol 3 tháng",           date: "15/05", tags: ["retinol", "result"]   },
+];
+
 export interface ApprovalSettings {
   requireApprovalForAuto: boolean;
   requireApprovalForManual: boolean;
@@ -825,3 +857,128 @@ export const APPROVAL_SETTINGS: ApprovalSettings = {
   notifyContact: "@mktkolbot",
   reminderAfterHours: 2,
 };
+
+// ─── Interaction ──────────────────────────────────────────────────────────────
+
+export interface InteractionActionConfig {
+  enabled: boolean;
+  dailyLimit: number;
+  emotions: string[];
+  templates: string[];
+}
+
+export interface InteractionTarget {
+  id: string;
+  name: string;
+  memberCount: number;
+  active: boolean;
+}
+
+export interface InteractionChannelConfig {
+  enabled: boolean;
+  mode: "random" | "targeted";
+  randomCount: number;
+  timeStart: string;
+  timeEnd: string;
+  jitterMinutes: number;
+  react: InteractionActionConfig;
+  comment: InteractionActionConfig;
+  share: { enabled: boolean; dailyLimit: number };
+  targets: InteractionTarget[];
+}
+
+export interface InteractionConfig {
+  profileId: string;
+  group: InteractionChannelConfig;
+  friend: InteractionChannelConfig;
+}
+
+const _GROUP_TEMPLATES = [
+  "Thông tin hữu ích quá! 👍",
+  "Mình cũng đang tìm hiểu về cái này 🥰",
+  "Cảm ơn bạn đã chia sẻ!",
+  "Hay quá! Follow để đọc thêm 💕",
+];
+const _FRIEND_TEMPLATES = [
+  "Đẹp quá bạn ơi! 😍",
+  "Nhìn xịn! Mua ở đâu vậy bạn?",
+  "Haha đúng không! 😂",
+  "Cổ vũ bạn nha! 💪",
+];
+
+export const INTERACTION_CONFIGS: InteractionConfig[] = [
+  {
+    profileId: "p1",
+    group: {
+      enabled: true, mode: "targeted", randomCount: 50,
+      timeStart: "08:00", timeEnd: "21:00", jitterMinutes: 15,
+      react:   { enabled: true,  dailyLimit: 30, emotions: ["like","love","haha"], templates: [] },
+      comment: { enabled: true,  dailyLimit: 10, emotions: [], templates: _GROUP_TEMPLATES.slice(0,3) },
+      share:   { enabled: false, dailyLimit: 2 },
+      targets: [
+        { id: "g1", name: "Hội Skincare VN",            memberCount: 85000,  active: true  },
+        { id: "g2", name: "Review Mỹ Phẩm Thật & Giả", memberCount: 124000, active: true  },
+        { id: "g3", name: "Beauty Tips Việt Nam",       memberCount: 56000,  active: false },
+      ],
+    },
+    friend: {
+      enabled: true, mode: "random", randomCount: 40,
+      timeStart: "09:00", timeEnd: "22:00", jitterMinutes: 10,
+      react:   { enabled: true,  dailyLimit: 50, emotions: ["like","love"], templates: [] },
+      comment: { enabled: true,  dailyLimit: 15, emotions: [], templates: _FRIEND_TEMPLATES.slice(0,2) },
+      share:   { enabled: false, dailyLimit: 3 },
+      targets: [
+        { id: "fl1", name: "Danh sách thân thiết", memberCount: 200, active: true },
+        { id: "fl2", name: "Khách hàng cũ",        memberCount: 350, active: true },
+      ],
+    },
+  },
+  {
+    profileId: "p2",
+    group: {
+      enabled: true, mode: "random", randomCount: 30,
+      timeStart: "10:00", timeEnd: "20:00", jitterMinutes: 20,
+      react:   { enabled: true,  dailyLimit: 20, emotions: ["like","wow"], templates: [] },
+      comment: { enabled: false, dailyLimit: 5,  emotions: [], templates: [] },
+      share:   { enabled: false, dailyLimit: 1 },
+      targets: [
+        { id: "g4", name: "Hội Công Nghệ Việt",   memberCount: 230000, active: true  },
+        { id: "g5", name: "Review Điện Thoại VN",  memberCount: 89000,  active: false },
+      ],
+    },
+    friend: {
+      enabled: false, mode: "targeted", randomCount: 20,
+      timeStart: "09:00", timeEnd: "21:00", jitterMinutes: 15,
+      react:   { enabled: true,  dailyLimit: 30, emotions: ["like","haha"], templates: [] },
+      comment: { enabled: false, dailyLimit: 10, emotions: [], templates: [] },
+      share:   { enabled: false, dailyLimit: 2 },
+      targets: [
+        { id: "fl3", name: "Followers Tech", memberCount: 500, active: true },
+      ],
+    },
+  },
+  {
+    profileId: "p3",
+    group: {
+      enabled: false, mode: "targeted", randomCount: 25,
+      timeStart: "08:00", timeEnd: "20:00", jitterMinutes: 10,
+      react:   { enabled: true,  dailyLimit: 25, emotions: ["like","love"], templates: [] },
+      comment: { enabled: true,  dailyLimit: 8,  emotions: [], templates: _GROUP_TEMPLATES.slice(1,3) },
+      share:   { enabled: false, dailyLimit: 1 },
+      targets: [
+        { id: "g6", name: "Hội Mẹ Bỉm Sữa",        memberCount: 310000, active: true },
+        { id: "g7", name: "Nuôi Con Theo Khoa Học", memberCount: 145000, active: true },
+      ],
+    },
+    friend: {
+      enabled: true, mode: "targeted", randomCount: 35,
+      timeStart: "08:00", timeEnd: "21:00", jitterMinutes: 5,
+      react:   { enabled: true,  dailyLimit: 40, emotions: ["like","love","wow"], templates: [] },
+      comment: { enabled: true,  dailyLimit: 12, emotions: [], templates: _FRIEND_TEMPLATES },
+      share:   { enabled: true,  dailyLimit: 3 },
+      targets: [
+        { id: "fl4", name: "Nhóm mẹ bỉm thân quen", memberCount: 180, active: true },
+      ],
+    },
+  },
+];

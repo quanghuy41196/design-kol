@@ -9,7 +9,7 @@ const TITLES: Record<string, { title: string; subtitle: string }> = {
   "/dashboard": { title: "Dashboard", subtitle: "Tổng quan hoạt động — tài khoản, bài đăng, tương tác" },
   "/accounts": { title: "Quản Lý Tài Khoản", subtitle: "Quản lý tài khoản Facebook kết nối" },
   "/kol": { title: "Quản Lý KOL", subtitle: "Phong cách viết bài, hình ảnh thương hiệu, nội dung định hướng" },
-  "/sources": { title: "Nguồn Nội Dung", subtitle: "Tạo, crawl và viết lại bài cho profile của bạn" },
+  "/sources": { title: "Quản Lý Nội Dung", subtitle: "Kho bài, AI tạo nội dung, quét nguồn & viết lại" },
   "/posting": { title: "Quản Lý Đăng Bài", subtitle: "Lịch đăng, tự động hóa, profile mẫu và duyệt bài" },
   "/comments": { title: "Bình Luận", subtitle: "Trả lời comment với gợi ý AI và template" },
   "/messages": { title: "Tin Nhắn", subtitle: "Hộp thư hợp nhất — phân loại tự động" },
