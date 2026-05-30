@@ -1,0 +1,254 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1779952440501,
+  "projectRoot": "/Users/khanhvitech/Code/GitHub/design-kol",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "next",
+        "version": "16.2.6",
+        "category": "fullstack"
+      },
+      {
+        "name": "react",
+        "version": "19.2.4",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.2.4",
+        "category": "frontend"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "rtk tsc --noEmit 2>&1",
+    "testCommand": null,
+    "lintCommand": "npm run lint",
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "eslint"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": "type-based"
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "public",
+      "src"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 7,
+      "lastAccessed": 1779952440479,
+      "keyFiles": [
+        "favicon.ico",
+        "file.svg",
+        "globe.svg",
+        "logo.png",
+        "next.svg"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 0,
+      "lastAccessed": 1779952440479,
+      "keyFiles": []
+    },
+    "src/app": {
+      "path": "src/app",
+      "purpose": "Application code",
+      "fileCount": 4,
+      "lastAccessed": 1779952440482,
+      "keyFiles": [
+        "favicon.ico",
+        "globals.css",
+        "layout.tsx"
+      ]
+    },
+    "src/components": {
+      "path": "src/components",
+      "purpose": "UI components",
+      "fileCount": 0,
+      "lastAccessed": 1779952440482,
+      "keyFiles": []
+    },
+    "src/lib": {
+      "path": "src/lib",
+      "purpose": "Library code",
+      "fileCount": 2,
+      "lastAccessed": 1779952440482,
+      "keyFiles": [
+        "mock-data.ts",
+        "utils.ts"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "src/app/kol/page.tsx",
+      "accessCount": 73,
+      "lastAccessed": 1779866764442,
+      "type": "file"
+    },
+    {
+      "path": "src/app/sources/page.tsx",
+      "accessCount": 34,
+      "lastAccessed": 1779952558732,
+      "type": "file"
+    },
+    {
+      "path": "src/lib/mock-data.ts",
+      "accessCount": 33,
+      "lastAccessed": 1780050651214,
+      "type": "file"
+    },
+    {
+      "path": "src/app/posting/page.tsx",
+      "accessCount": 28,
+      "lastAccessed": 1780071105117,
+      "type": "file"
+    },
+    {
+      "path": "src/components/layout/sidebar.tsx",
+      "accessCount": 26,
+      "lastAccessed": 1780044164345,
+      "type": "file"
+    },
+    {
+      "path": "src/app/accounts/page.tsx",
+      "accessCount": 11,
+      "lastAccessed": 1779877383334,
+      "type": "file"
+    },
+    {
+      "path": "src/components/layout/topbar.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1779866879927,
+      "type": "file"
+    },
+    {
+      "path": "src/app/interactions/page.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1780044330994,
+      "type": "file"
+    },
+    {
+      "path": "src/app/page.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1779780799983,
+      "type": "file"
+    },
+    {
+      "path": "src/app/comments/page.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1779958469255,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 2,
+      "lastAccessed": 1779766559880,
+      "type": "file"
+    },
+    {
+      "path": "src/app/bot/page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1779869074208,
+      "type": "file"
+    },
+    {
+      "path": "src/app/posts/page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1779869074464,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 1,
+      "lastAccessed": 1779766559828,
+      "type": "file"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1779766560067,
+      "type": "file"
+    },
+    {
+      "path": "src/app/schedule/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1779766564442,
+      "type": "file"
+    },
+    {
+      "path": "src/app/messages/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1779766565798,
+      "type": "file"
+    },
+    {
+      "path": "src/components/shared/profile-context.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1779766571982,
+      "type": "file"
+    },
+    {
+      "path": "src/components/shared/ai-score-badge.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1779766574710,
+      "type": "file"
+    },
+    {
+      "path": "src/components/shared/post-status-badge.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1779766574883,
+      "type": "file"
+    },
+    {
+      "path": "src/app/dashboard/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1779780776773,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
